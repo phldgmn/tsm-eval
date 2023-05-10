@@ -14,11 +14,12 @@
   * seminr
   * languageserver
   * vscDebugger
+  * rsvg
 
 Install dependencies:
 
 ```R
-install.packages(c("conflicted", "dplyr", "tidyverse", "stringr", "readr", "seminr", "languageserver", "httpgd", "vscDebugger"))
+install.packages(c("conflicted", "dplyr", "tidyverse", "stringr", "readr", "seminr", "languageserver", "httpgd", "vscDebugger", "rsvg"))
 ```
 
 ## IDE: Visual Studio Code

@@ -11,7 +11,9 @@ library(tidyverse)
 library(stringr)
 library(readr)
 library(seminr)
+library(httpgd)
 set.seed(42)
+hgd()
 
 # read column-prefixes of relevant items
 items <- readRDS("data/item_prefixes.RData")
@@ -59,20 +61,11 @@ mm <- constructs(
   composite("TKR", multi_items("TKR.TKR", 1:4)),  # Task-related Knowledge Red.
   composite("WEI", multi_items("WEI.WEI", 1:8)),  # Work Environment Improvement
   higher_composite("EoI", c("LS", "PPC", "PS", "PU", "TKR", "WEI"))
-  # TODO: Dilemmas of Transformation
-  # TODO: Choice and commitment to fundamentally innovate
-  # TODO: Market necessity?
-  # TODO: Automation
-  # TODO: Informating
 )
 
 # create structural model
 sm <- relationships(
-  paths(from = c("IoIT"), to = c("A", "DoT")),
-  paths(from = c("DoT"), to = c("CaCtFI")),
-  paths(from = c("CaCtFI"), to = c("A", "I")),
-  paths(from = c("A"), to = c("EoA", "I")),
-  paths(from = c("I"), to = c("EoI", "DoT"))
+  paths(from = c("IoIT"), to = c("EoA", "EoI"))
 )
 
 # estimate PLS model
@@ -87,8 +80,10 @@ pls_model <- estimate_pls(data = data,
 summary(pls_model)
 
 # Plot measurement model
-plot(mm)
+#plot(mm)
 # Plot structural model
-plot(sm)
+#plot(sm)
+
 # Plot PLS model
 plot(pls_model)
+save_plot("plot.pdf")
