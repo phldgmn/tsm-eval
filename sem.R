@@ -1,4 +1,5 @@
 DEBUG <- FALSE # nolint: object_name_linter.
+CLEAN_DATA <- FALSE # nolint: object_name_linter.
 if (DEBUG == TRUE) {
   library(vscDebugger)
   .vsc.listen()
@@ -16,14 +17,20 @@ set.seed(42)
 items <- readRDS("data/item_prefixes.RData")
 
 # read csv
-data <- read.csv("data/results-survey116679.csv")
+data <- read.csv("data/results-survey116679.csv", na.strings = c("", "NA"))
 
-# clean data
+if (CLEAN_DATA == TRUE) {
+  # clean data
+  data <- data %>%
+    # extract only the selected value of likert scale
+    mutate(across(starts_with(items), ~str_extract(., "\\d(?=\\s?\\-.*)"))) %>%
+    # convert to integer if possible, numeric else
+    type_convert(guess_integer = TRUE)
+}
+
 data <- data %>%
-  # extract only the selected value of likert scale
-  mutate(across(starts_with(items), ~str_extract(., "\\d(?=\\s?\\-.*)"))) %>%
-  # convert to integer if possible, numeric else
-  type_convert(guess_integer = TRUE)
+  mutate(na_ratio = rowMeans(is.na(select(., starts_with(items))))) %>%
+  dplyr::filter(na_ratio < 0.3)
 
 # remove trailing dots from column names
 colnames(data) <-  gsub(".$", "", colnames(data))
