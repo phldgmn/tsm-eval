@@ -86,4 +86,18 @@ summary(pls_model)
 
 # Plot PLS model
 plot(pls_model)
-save_plot("plot.pdf")
+save_plot("sem.pdf")
+
+pls_boot <- bootstrap_model(pls_model,
+  nboot = 1000, seed = 42)
+boot_summary <- summary(pls_boot)
+
+# See full summary of all the paths
+boot_summary$bootstrapped_paths
+
+# gather paths and t-values
+paths <- boot_summary$bootstrapped_paths[, "Original Est."]
+tvalues <- boot_summary$bootstrapped_paths[, "T Stat."]
+
+plot(hist(tvalues))
+save_plot("bootstrap.pdf")
