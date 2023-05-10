@@ -30,6 +30,7 @@ if (CLEAN_DATA == TRUE) {
     type_convert(guess_integer = TRUE)
 }
 
+# filter out all cases, which have 30% or more missing data
 data <- data %>%
   mutate(na_ratio = rowMeans(is.na(select(., starts_with(items))))) %>%
   dplyr::filter(na_ratio < 0.3)
@@ -79,18 +80,15 @@ pls_model <- estimate_pls(data = data,
 # generate summary
 summary(pls_model)
 
-# Plot measurement model
-#plot(mm)
-# Plot structural model
-#plot(sm)
-
 # Plot PLS model
 plot(pls_model)
 save_plot("sem.pdf")
 
+# bootstrap the model
 pls_boot <- bootstrap_model(pls_model,
   nboot = 1000, seed = 42)
 boot_summary <- summary(pls_boot)
+print(boot_summary)
 
 # See full summary of all the paths
 boot_summary$bootstrapped_paths
@@ -99,5 +97,6 @@ boot_summary$bootstrapped_paths
 paths <- boot_summary$bootstrapped_paths[, "Original Est."]
 tvalues <- boot_summary$bootstrapped_paths[, "T Stat."]
 
+# plot bootstrapping
 plot(hist(tvalues))
 save_plot("bootstrap.pdf")
