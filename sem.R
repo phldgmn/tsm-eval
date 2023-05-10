@@ -13,10 +13,10 @@ library(seminr)
 set.seed(42)
 
 # read column-prefixes of relevant items
-items <- readRDS("item_prefixes.RData")
+items <- readRDS("data/item_prefixes.RData")
 
 # read csv
-data <- read.csv("../tsm-eval/results-survey116679.csv")
+data <- read.csv("data/results-survey116679.csv")
 
 # clean data
 data <- data %>%
