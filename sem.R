@@ -49,6 +49,8 @@ mm <- constructs(
   )
 
 # create structural model
+# TODO: PLACEHOLDER ONLY; see README.md
+
 sm <- relationships(
   paths(from = c("IMG", "PEOU"), to = c("VIS", "VOI")),
   paths(from = c("VIS"), to = c("VOI")))
@@ -63,3 +65,10 @@ pls_model <- estimate_pls(data = data,
 
 # generate summary
 summary(pls_model)
+
+# Plot measurement model
+plot(mm)
+# Plot structural model
+plot(sm)
+# Plot PLS model
+plot(pls_model)
