@@ -6,14 +6,22 @@ if (DEBUG == TRUE) {
 }
 
 library(conflicted)
+library(parallel)
 library(dplyr)
 library(tidyverse)
 library(stringr)
 library(readr)
 library(seminr)
 library(httpgd)
+library(easystats)
+options(es.use_symbols = TRUE)
 set.seed(42)
-hgd()
+
+# settings for plotting
+thm <- seminr_theme_get()
+thm$sm.edge.boot.show_t_value <- TRUE
+thm$mm.edge.boot.show_p_stars <- TRUE
+seminr_theme_set(thm)
 
 # read column-prefixes of relevant items
 items <- readRDS("data/item_prefixes.RData")
@@ -33,10 +41,10 @@ if (CLEAN_DATA == TRUE) {
 # filter out all cases, which have 30% or more missing data
 data <- data %>%
   mutate(na_ratio = rowMeans(is.na(select(., starts_with(items))))) %>%
-  dplyr::filter(na_ratio < 0.3)
+  dplyr::filter(na_ratio < 0.1)
 
 # remove trailing dots from column names
-colnames(data) <-  gsub(".$", "", colnames(data))
+colnames(data) <-  gsub("\\.$", "", colnames(data))
 # remove leading zeros
 colnames(data) <-  gsub("(?<=\\D)0{1}(?=\\d)", "", colnames(data), perl = TRUE)
 
@@ -66,37 +74,79 @@ mm <- constructs(
 
 # create structural model
 sm <- relationships(
-  paths(from = c("IoIT"), to = c("EoA", "EoI"))
+  # basic paths from the introduction to the effects
+  paths(from = "IoIT", to = c("EoA", "EoI")),
+  # Automation to Informating; these do not have indicators
+  # so we need to help us out by reusing the effects
+  paths(from = "EoA", to = "EoI")
 )
 
 # estimate PLS model
 pls_model <- estimate_pls(data = data,
   measurement_model = mm,
-  structural_model  = sm,
-  inner_weights = path_weighting,
-  missing = mean_replacement,
-  missing_value = NA)
+  structural_model  = sm)
 
 # generate summary
+sink("output/pls.summary.txt")
 summary(pls_model)
+sink()
 
 # Plot PLS model
+plot(mm)
+save_plot("output/mm.pdf")
+plot(sm)
+save_plot("output/sm.pdf")
 plot(pls_model)
-save_plot("sem.pdf")
+save_plot("output/estimated.pdf")
 
 # bootstrap the model
-pls_boot <- bootstrap_model(pls_model,
-  nboot = 1000, seed = 42)
-boot_summary <- summary(pls_boot)
-print(boot_summary)
+pls_boot <- seminr::bootstrap_model(pls_model, nboot = 500, seed = 42)
 
-# See full summary of all the paths
-boot_summary$bootstrapped_paths
+# Plot bootstrapped PLS model
+plot(pls_boot, title = "Bootstrapped Model")
+save_plot("output/bootstrapped.pdf")
 
 # gather paths and t-values
+boot_summary <- summary(pls_boot)
 paths <- boot_summary$bootstrapped_paths[, "Original Est."]
 tvalues <- boot_summary$bootstrapped_paths[, "T Stat."]
 
-# plot bootstrapping
-plot(hist(tvalues))
-save_plot("bootstrap.pdf")
+# degrees of freedom will be the number of rows in the data sample
+df <- nrow(data)
+# calculate pvalues from tvalues and df; round to 3 decimal places
+pvalues <- round(pt(tvalues, df, lower.tail = FALSE), 3)
+
+# make a table of paths, tvalues, pvalues
+sink("output/pls.boot.sign.txt")
+data.frame(paths, tvalues, pvalues)
+sink()
+
+# get a final summary of the bootstrapping
+sink("output/pls.boot.summary.txt")
+summary(pls_boot, fit.measures = TRUE, standardized = TRUE)
+sink()
+
+# report effect sizes
+sink("output/pls.boot.effectsizes.txt")
+# get Cohen's d from tvalues and interpret
+interpret(t_to_d(tvalues, df), rules = "cohen1988")
+print("\n")
+f_2 <- function(model, from, to) {
+  cat(from, "->", to, ":\t", fSquared(pls_model, from, to), "\n", sep = "")
+}
+cat("f-squared\n")
+f_2(pls_model, "IoIT", "EoA")
+f_2(pls_model, "IoIT", "EoI")
+f_2(pls_model, "EoA", "EoI")
+sink()
+
+# report participants data
+sink("output/participants.txt")
+report_participants(data, age = "Age", gender = "Gender",
+  education = "Education", country = "Residence")
+sink()
+
+# interpretation
+sink("output/pls.r2.txt")
+interpret_r2(pls_boot$rSquared[1, ], rules = "hair2011")
+sink()

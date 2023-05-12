@@ -6,14 +6,17 @@ if (DEBUG == TRUE) {
 }
 
 library(conflicted)
+library(parallel)
 library(dplyr)
 library(tidyverse)
 library(stringr)
 library(readr)
 library(httpgd)
 set.seed(42)
-
+library(easystats)
+options(es.use_symbols = TRUE)
 library(lavaan)
+library(lavaanPlot)
 
 # read column-prefixes of relevant items
 items <- readRDS("data/item_prefixes.RData")
@@ -61,9 +64,26 @@ model <- '
     EoI =~ LS + PPC + PS + PU + TKR + WEI
   # regressions
     EoA ~ IoIT
-    EoI ~ IoIT
+    EoI ~ IoIT + EoA
   # residual correlations
 '
+#, parallel = "multicore", ncpus = detectCores() - 2)
+fit <- sem(model, data = data, se = "bootstrap", bootstrap = 1000, optim.method = "em")
+summary(fit, fit.measures = TRUE, standardized = TRUE)
+# später: suppressWarnings(report(fit))
+suppressWarnings(report_table(fit))
+suppressWarnings(report_performance(fit))
+# später: suppressWarnings(report_text(fit))
+interpret(fit)
+# report_participants
 
-fit <- sem(model, data = data)
-summary(fit, standardized = TRUE)
+e_opts <- formatting(list(color = "orange"),list(color = "grey", penwidth = 0.5), list(color = "blue"), type = "edge")
+n_opts <- formatting(list(scolor = "orange"), list(color = "blue"), type = "node")
+
+
+pl <- lavaanPlot2(fit,
+  graph_options = list(layout = "fdp"),
+  node_options = n_opts,
+  edge_options = e_opts,
+  stars = c("regress", "latent"), coef_labels = TRUE)
+embed_plot_pdf(pl, "lavaan.pdf")

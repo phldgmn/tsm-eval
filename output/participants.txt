@@ -1,0 +1,1 @@
+[1] "518 participants (Mean age = 31.3, SD = 10.9, range: [17, 67], 0.2% missing; Gender: 51.7% women, 47.5% men, 0.77% non-binary; Education: -oth-, 2.32%; EDU1, 1.35%; EDU2, 10.04%; EDU3, 14.09%; EDU4, 15.44%; EDU5, 12.55%; EDU6, 27.99%; EDU7, 12.55%; EDU8, 1.93%; missing, 1.74%; Country: 35.91% UK, 32.24% DE, 29.73% US, 2.12% other)"
