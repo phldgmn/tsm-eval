@@ -41,7 +41,7 @@ if (CLEAN_DATA == TRUE) {
 # filter out all cases, which have 30% or more missing data
 data <- data %>%
   mutate(na_ratio = rowMeans(is.na(select(., starts_with(items))))) %>%
-  dplyr::filter(na_ratio < 0.1)
+  dplyr::filter(na_ratio < 0.01)
 
 # remove trailing dots from column names
 colnames(data) <-  gsub("\\.$", "", colnames(data))
@@ -100,7 +100,7 @@ plot(pls_model)
 save_plot("output/estimated.pdf")
 
 # bootstrap the model
-pls_boot <- seminr::bootstrap_model(pls_model, nboot = 500, seed = 42)
+pls_boot <- seminr::bootstrap_model(pls_model, nboot = 5000, seed = 42)
 
 # Plot bootstrapped PLS model
 plot(pls_boot, title = "Bootstrapped Model")
