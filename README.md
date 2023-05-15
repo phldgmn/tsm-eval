@@ -18,11 +18,13 @@
   * easystats
   * lavaan
   * lavaanPlot
+  * semTools
+  * reader
 
 Install dependencies:
 
 ```R
-install.packages(c("conflicted", "dplyr", "tidyverse", "stringr", "readr", "seminr", "languageserver", "httpgd", "vscDebugger", "rsvg", "easystats", "lavaan", "lavaanPlot"))
+install.packages(c("conflicted", "dplyr", "tidyverse", "stringr", "readr", "seminr", "languageserver", "httpgd", "vscDebugger", "rsvg", "easystats", "lavaan", "lavaanPlot", "semTools", "reader"))
 ```
 
 ## IDE: Visual Studio Code

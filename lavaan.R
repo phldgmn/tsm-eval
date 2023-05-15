@@ -68,7 +68,7 @@ model <- '
   # residual correlations
 '
 #, parallel = "multicore", ncpus = detectCores() - 2)
-fit <- sem(model, data = data, se = "bootstrap", bootstrap = 1000, optim.method = "em")
+fit <- sem(model, data = data, se = "bootstrap", bootstrap = 250, optim.method = "em")
 summary(fit, fit.measures = TRUE, standardized = TRUE)
 # später: suppressWarnings(report(fit))
 suppressWarnings(report_table(fit))
