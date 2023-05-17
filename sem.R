@@ -51,6 +51,8 @@ data <- data %>%
 
 # remove trailing dots from column names
 colnames(data) <-  gsub("\\.$", "", colnames(data))
+# PU. should be PUI.
+colnames(data) <-  gsub("^PU\\.", "PUI\\.", colnames(data))
 # remove leading zeros
 colnames(data) <-  gsub("(?<=\\D)0{1}(?=\\d)", # nolint: object_name_linter.
   "", colnames(data), perl = TRUE)
@@ -74,11 +76,11 @@ mm <- constructs(
   composite("LS", multi_items("LS.LS", 1:8)),     # Learning Support
   composite("PPC", multi_items("PPC.PPC", 1:6)),  # P. Process Control
   composite("PS", multi_items("PS.PS", 1:11)),    # P. Support
-  composite("PU", multi_items("PU.PUI",
+  composite("PUI", multi_items("PUI.PUI",
     c(1:5, 7:8))), # P. Usefulness of Informating
   composite("TKR", multi_items("TKR.TKR", 1:4)),  # Task-rel. Knowledge Red.
   composite("WEI", multi_items("WEI.WEI", 1:8)),  # Work Env. Improvement
-  higher_composite("EoI", c("LS", "PPC", "PS", "PU", "TKR", "WEI"))
+  higher_composite("EoI", c("LS", "PPC", "PS", "PUI", "TKR", "WEI"))
 )
 if (COMPOSITE_FALLBACK == FALSE) {
   mm <- as.reflective(mm)
