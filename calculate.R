@@ -32,9 +32,8 @@ calculate_pls <- function(model, data,
     boostrapped = boostrapped,
     structural_model = sm,
     measurement_model = mm,
-    estimation_summary = summary(estimate,
-      fit.measures = TRUE),
-    bootstrap_summary = summary(estimate,
+    estimation_summary = summary(estimate),
+    bootstrap_summary = summary(boostrapped,
       fit.measures = TRUE)
   )
   return(ret_val)

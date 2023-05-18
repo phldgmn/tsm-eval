@@ -1,0 +1,6 @@
+          EoA           EoI 
+   "moderate" "substantial" 
+(Rules: hair2011)
+             EoA       EoI
+Rsq    0.5173451 0.7986834
+AdjRsq 0.5163333 0.7978376

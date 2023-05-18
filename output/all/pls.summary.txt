@@ -1,0 +1,31 @@
+
+Results from  package seminr (2.3.1)
+
+Path Coefficients:
+         EoA   EoI
+R^2    0.521 0.810
+AdjR^2 0.520 0.809
+IoIT   0.722 0.295
+EoA        . 0.663
+
+Reliability:
+     alpha  rhoC   AVE  rhoA
+IoIT 0.681 0.795 0.499 0.740
+EoA  0.685 0.827 0.618 0.733
+EoI  0.923 0.942 0.731 0.934
+IMG  0.875 0.923 0.800 0.876
+PEOU 0.879 0.909 0.625 0.883
+VIS  0.816 0.891 0.731 0.818
+VOI  0.865 0.917 0.787 0.873
+PUA  0.918 0.934 0.669 0.918
+RES  0.687 0.827 0.615 0.696
+SQR  0.794 0.879 0.708 0.794
+LS   0.899 0.919 0.586 0.900
+PPC  0.868 0.901 0.603 0.871
+PS   0.943 0.951 0.639 0.944
+PUI  0.923 0.938 0.684 0.924
+TKR  0.857 0.903 0.700 0.857
+WEI  0.910 0.927 0.615 0.911
+
+Alpha, rhoC, and rhoA should exceed 0.7 while AVE should exceed 0.5
+
