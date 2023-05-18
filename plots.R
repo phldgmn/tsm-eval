@@ -18,4 +18,5 @@ x_plots <- function(model, pls) {
     plot = seminr::plot_htmt(pls$boostrapped))
   #seminr::save_plot(paste("output", model, "scores.pdf", sep = "/"),
   #  plot = seminr::plot_scores(pls$estimation))
+  return()
 }

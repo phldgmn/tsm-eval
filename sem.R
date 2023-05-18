@@ -37,6 +37,7 @@ source("calculate.R")
 source("plots.R")
 source("summaries.R")
 source("effects.R")
+source("cb_sem.R")
 
 if (!dir.exists("output")) {
   dir.create("output")
@@ -47,11 +48,12 @@ compute_model <- function(model) {
     dir.create(paste("output", model, sep = "/"))
   }
 
-  pls <- calculate_pls(model, data, nboot = 150)
+  pls <- calculate_pls(model, data, nboot = 5000)
 
   x_summaries(model, pls)
   x_effects(model, pls)
   x_plots(model, pls)
+  x_cbsem(model, pls)
 }
 
 # report participants data

@@ -63,4 +63,6 @@ x_effects <- function(model, pls) {
     "composite_reliability.txt", sep = ""))
   print(pls$estimation_summary$reliability)
   sink()
+
+  return()
 }

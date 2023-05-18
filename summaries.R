@@ -17,4 +17,6 @@ x_summaries <- function(model, pls) {
   sink(paste("output", model, "pls.boot.summary.txt", sep = "/"))
   print(pls$bootstrap_summary)
   sink()
+
+  return()
 }
