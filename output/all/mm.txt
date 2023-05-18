@@ -1,0 +1,10 @@
+indicator loadings (>.708)
+
+
+indicator reliability (>.500)
+
+
+composite reliability
+
+
+HTMT (lavaan/semTools)

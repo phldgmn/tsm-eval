@@ -1,0 +1,7 @@
+outer loadings
+
+
+outer weights
+
+
+path coef

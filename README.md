@@ -54,6 +54,17 @@ See here: [sem-in-r/seminr](https://github.com/sem-in-r/seminr).
 
 TODO
 
+
+## Kommentare Richard
+
+> Das wir bei PU (bzw. ich hatte das mal PUI getauft meine ich ^^) und PUA ein Problem haben, wundert mich nicht. Die Items sind sehr ähnlich und beziehen sich nur auf einen anderen Aspekt (Automatisierung oder Informatisierung). Das ist im Grunde genommen im zweiten Card Sorting auch herausgekommen. Da hatten wir dann auch mal gesagt, dass bei Informatisierung viel mehr die Unterstützung (PS) im Vordergrund steht und bei Automatisierung PU. Daher könnte man PUI auch ganz herausnehmen.
+>
+> Bei** **SQR <-> RES wundert es mich tatsächlich etwas.
+>
+> Bei PS <-> PUA kann es auch sein, weil die Items recht ähnlich sind (wie bei PUI). Da könnte man schauen, ob man die Items, die in den Evaluierungsschritten eigentlich herausgeflogen sind hier auch mal herausnimmt. Am ehesten sind hier demnach PS 6,7,8, und 10 interessant. Grundsätzlich, weil das „nur“ im ersten Schritt rausgeflogen ist, weil es so viele Items gab, wäre PS 11 ggf. auch interessant. Ich frage mich, ob sich etwas ändert, wenn man nur diese Items nimmt. Gleiches gilt quasi auch für PU. Da könnte man sich erstmal nur auf die PU 2,3, und 5 konzentrieren, wenn man nur die höchsten ranks nimmt. Ansonsten alle PU items bis auf PU 6.
+>
+> PS <-> PUI wundert mich wegen der oben erwähnten Ähnlichkeit auch nicht. Das Problem wäre behoben, wenn man PUI herausnimmt.
+
 ## Citations
 
 > Lüdecke, Patil, Ben-Shachar, Wiernik, Bacher, Thériault, & Makowski (2022). easystats: Framework for Easy Statistical Modeling, Visualization, and Reporting. CRAN. Available from https://easystats.github.io/easystats/

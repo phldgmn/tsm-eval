@@ -1,0 +1,6 @@
+
+
+f-squared
+IoIT->EoA:	1.248272
+IoIT->EoI:	0.1821612
+EoA->EoI:	1.153348
