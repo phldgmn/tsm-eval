@@ -1,0 +1,6 @@
+       EoA        EoI 
+    "weak" "moderate" 
+(Rules: hair2011)
+         EoA   EoI
+Rsq    0.311 0.560
+AdjRsq 0.310 0.559

@@ -22,7 +22,7 @@ library(easystats)
 library(correlation)
 library(report)
 options(es.use_symbols = TRUE)
-options(digits=3)
+options(digits = 3)
 set.seed(42)
 
 # settings for plotting
@@ -35,12 +35,6 @@ source("data.R")
 #data <- prepare_data(use_complex_import = TRUE)
 data <- prepare_data()
 
-source("calculate.R")
-source("plots.R")
-source("summaries.R")
-source("effects.R")
-source("cb_sem.R")
-
 if (!dir.exists("output")) {
   dir.create("output")
 }
@@ -50,7 +44,7 @@ compute_model <- function(model) {
     dir.create(paste("output", model, sep = "/"))
   }
 
-  pls <- calculate_pls(model, data, nboot = 50)
+  pls <- calculate_pls(model, data, nboot = 1000)
 
   x_summaries(model, pls)
   x_effects(model, pls)
@@ -64,14 +58,21 @@ print(report_participants(data, age = "Age", gender = "Gender",
   education = "Education", country = "Residence", digits = 3))
 sink()
 
+corr <- correlation(data) %>% dplyr::filter(p < 0.05)
 num_data <- data %>% select(where(is.numeric))
 sink("output/general.txt")
 print(psych::describe(num_data))
 print(report::report_sample(num_data, digits = 3))
-print(correlation(data))
+print(corr)
 sink()
 
-compute_model("all")
-compute_model("plain")
-compute_model("exPUI")
-compute_model("exPS-PUI")
+source("calculate.R")
+source("plots.R")
+source("summaries.R")
+source("effects.R")
+source("cb_sem.R")
+
+compute_model("0-default")
+compute_model("1-indicators")
+compute_model("2-RES")
+compute_model("3-RES-PU")

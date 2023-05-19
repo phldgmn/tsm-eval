@@ -1,0 +1,26 @@
+f-squared (from summary)
+      IoIT   EoA   EoI
+IoIT 0.000 1.088 0.229
+EoA  0.000 0.000 0.685
+EoI  0.000 0.000 0.000
+
+
+it-criteria
+         EoA      EoI
+AIC -461.465 -853.617
+BIC -452.570 -840.275
+d    |       95% CI | Interpretation
+------------------------------------
+2.55 | [2.34, 2.76] |          large
+0.90 | [0.73, 1.06] |          large
+1.88 | [1.69, 2.07] |          large
+
+- Interpretation rule: cohen1988
+
+f-squared (from t-values)
+IoIT->EoA:	1.09
+NULL
+IoIT->EoI:	0.229
+NULL
+EoA->EoI:	0.685
+NULL

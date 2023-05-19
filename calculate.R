@@ -39,11 +39,16 @@ calculate_pls <- function(model, data, skip_bootstrap = FALSE,
     cb_sem <- NULL
   }
 
+  cfa <- NULL
+  cfa <- try(seminr::estimate_cfa(data = data,
+    measurement_model = seminr::as.reflective(mm)), silent = TRUE)
+
   # prepare object to return
   ret_val <- list(
     estimation = estimate,
     boostrapped = boostrapped,
     cb_sem = cb_sem,
+    cfa = cfa,
     structural_model = sm,
     measurement_model = mm,
     estimation_summary = summary(estimate),

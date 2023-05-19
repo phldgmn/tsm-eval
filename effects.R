@@ -27,10 +27,15 @@ x_effects <- function(model, pls) {
   # report effect sizes
   sink(paste("output", model, "pls.boot.effectsizes.txt", sep = "/"))
   # get Cohen's d from tvalues and interpret
+  cat("f-squared (from summary)\n")
+  print(pls$estimation_summary$fSquare)
+  cat("\n\n")
+  cat("it-criteria\n")
+  print(pls$estimation_summary$it_criteria)
   print(effectsize::interpret_cohens_d(effectsize::t_to_d(tvalues, nrow(data)),
     rules = "cohen1988"))
   cat("\n\n")
-  cat("f-squared\n")
+  cat("f-squared (from t-values)\n")
   print(f_2(pls$estimation, "IoIT", "EoA"))
   print(f_2(pls$estimation, "IoIT", "EoI"))
   print(f_2(pls$estimation, "EoA", "EoI"))
