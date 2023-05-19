@@ -10,8 +10,8 @@ mm <- constructs(
     c(1:5, 7:8))), # P. Usefulness of Automation
   composite("RES", multi_items("RES.RES", 1:3)),  # Results? 4
   composite("SQR", multi_items("SQR.SQR", 1:3)),  # Status-Quo Reproduction 4
-  # composite("SR", multi_items("SR.SR", 1:4)),     # Social Reduction
-  higher_composite("EoA", c("PUA", "RES", "SQR")), #, "SR")),
+  composite("SR", multi_items("SR.SR", 1:4)),     # Social Reduction
+  higher_composite("EoA", c("PUA", "RES", "SQR", "SR")), #, "SR")),
   # Effects of Informating
   composite("LS", multi_items("LS.LS", 1:8)),     # Learning Support
   composite("PPC", multi_items("PPC.PPC", 1:6)),  # P. Process Control

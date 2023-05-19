@@ -1,15 +1,15 @@
 d    |       95% CI | Interpretation
 ------------------------------------
-2.62 | [2.38, 2.87] |          large
-0.71 | [0.52, 0.89] |         medium
-1.92 | [1.70, 2.14] |          large
+2.71 | [2.49, 2.92] |          large
+0.72 | [0.56, 0.88] |         medium
+1.84 | [1.65, 2.02] |          large
 
 - Interpretation rule: cohen1988
 
 f-squared
-IoIT->EoA:	1.294861
+IoIT->EoA:	1.35
 NULL
-IoIT->EoI:	0.1716617
+IoIT->EoI:	0.144
 NULL
-EoA->EoI:	0.8307324
+EoA->EoI:	0.778
 NULL

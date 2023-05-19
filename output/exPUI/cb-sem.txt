@@ -1,0 +1,60 @@
+
+Results from  package seminr (2.3.1)
+Estimation used  package seminr (2.3.1)
+
+Fit metrics:
+      npar       fmin       logl        aic        bic     ntotal       bic2        rmr       srmr       crmr        gfi       agfi       pgfi        mfi       ecvi 
+   145.000      3.976 -47097.050  94484.100  95095.508    501.000  94635.268      0.157      0.063      0.064      0.776      0.760      0.724      0.138      8.531 
+
+                         metric    scaled robust
+cfi                       0.906     0.928  0.929
+tli                       0.902     0.925  0.927
+nnfi                      0.902     0.925  0.927
+rni                       0.906     0.928  0.929
+rmsea                     0.044     0.034  0.038
+rmsea.ci.lower            0.042     0.032  0.035
+rmsea.ci.upper            0.047     0.036  0.041
+rmsea.pvalue              1.000     1.000  1.000
+rmsea.notclose.pvalue     0.000     0.000  0.000
+chisq                  3983.929  3142.827      .
+df                     2000.000  2000.000      .
+pvalue                    0.000     0.000      .
+baseline.chisq        23219.883 18029.662      .
+baseline.df            2080.000  2080.000      .
+baseline.pvalue           0.000     0.000      .
+rfi                       0.822     0.819      .
+nfi                       0.828     0.826      .
+pnfi                      0.797     0.794      .
+ifi                       0.907     0.929      .
+
+Reliability:
+     rhoC  AVE
+IMG  0.87 0.70
+PEOU 0.88 0.55
+VIS  0.81 0.59
+VOI  0.86 0.68
+IoIT 0.68 0.37
+PUA  0.92 0.61
+RES  0.70 0.44
+SQR  0.79 0.56
+EoA  0.81 0.59
+LS   0.90 0.53
+PPC  0.87 0.52
+PS   0.94 0.60
+TKR  0.85 0.59
+WEI  0.91 0.56
+EoI  0.93 0.73
+
+Path Coefficients:
+      EoA  EoI
+R^2  0.91 1.00
+IoIT 0.95 0.04
+EoA     . 0.96
+
+The model is significantly different from a baseline model (Chi2(2000) = 3983.93, p < .001). The NNFI (.90 > .90) suggest a satisfactory fit. The GFI (.78 < .95)
+suggest a poor fit., The model is significantly different from a baseline model (Chi2(2000) = 3983.93, p < .001). The CFI (.91 > .90) suggest a satisfactory fit. The
+AGFI (.76 < .90) suggest a poor fit., The model is significantly different from a baseline model (Chi2(2000) = 3983.93, p < .001). The RMSEA (.04 < .05) suggest a
+satisfactory fit. The NFI (.83 < .90) suggest a poor fit., The model is significantly different from a baseline model (Chi2(2000) = 3983.93, p < .001). The SRMR (.06
+< .08) suggest a satisfactory fit. The RFI (.82 < .90) suggest a poor fit., The model is significantly different from a baseline model (Chi2(2000) = 3983.93, p <
+.001). The PNFI (.80 > .50) suggest a satisfactory fit. The GFI (.78 < .95) suggest a poor fit. and The model is significantly different from a baseline model
+(Chi2(2000) = 3983.93, p < .001). The IFI (.91 > .90) suggest a satisfactory fit. The AGFI (.76 < .90) suggest a poor fit.

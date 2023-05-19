@@ -1,4 +1,4 @@
-calculate_pls <- function(model, data,
+calculate_pls <- function(model, data, skip_bootstrap = FALSE,
   nboot = 2500, composite_fallback = TRUE, estimate_cbsem = TRUE) {
   # create the measurement model
   source(paste("input", model, "measure.model.R",
@@ -23,8 +23,13 @@ calculate_pls <- function(model, data,
     measurement_model = mm,
     structural_model  = sm)
 
-  # bootstrap the model
-  boostrapped <- seminr::bootstrap_model(estimate, nboot = nboot, seed = 42)
+  bootstrap_summary <- NULL
+  boostrapped <- NULL
+  if (skip_bootstrap == FALSE) {
+    # bootstrap the model
+    boostrapped <- seminr::bootstrap_model(estimate, nboot = nboot, seed = 42)
+    bootstrap_summary <- summary(boostrapped, fit.measures = TRUE)
+  }
 
   if (estimate_cbsem == TRUE) {
     cb_sem <- seminr::estimate_cbsem(data = data,
@@ -42,8 +47,7 @@ calculate_pls <- function(model, data,
     structural_model = sm,
     measurement_model = mm,
     estimation_summary = summary(estimate),
-    bootstrap_summary = summary(boostrapped,
-      fit.measures = TRUE)
+    bootstrap_summary = bootstrap_summary
   )
   return(ret_val)
 }

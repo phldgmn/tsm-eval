@@ -22,6 +22,7 @@ library(easystats)
 library(correlation)
 library(report)
 options(es.use_symbols = TRUE)
+options(digits=3)
 set.seed(42)
 
 # settings for plotting
@@ -31,6 +32,7 @@ thm$mm.edge.boot.show_p_stars <- TRUE
 seminr_theme_set(thm)
 
 source("data.R")
+#data <- prepare_data(use_complex_import = TRUE)
 data <- prepare_data()
 
 source("calculate.R")
@@ -48,7 +50,7 @@ compute_model <- function(model) {
     dir.create(paste("output", model, sep = "/"))
   }
 
-  pls <- calculate_pls(model, data, nboot = 5000)
+  pls <- calculate_pls(model, data, nboot = 50)
 
   x_summaries(model, pls)
   x_effects(model, pls)
@@ -59,7 +61,7 @@ compute_model <- function(model) {
 # report participants data
 sink(paste("output", "participants.txt", sep = "/"))
 print(report_participants(data, age = "Age", gender = "Gender",
-  education = "Education", country = "Residence"))
+  education = "Education", country = "Residence", digits = 3))
 sink()
 
 num_data <- data %>% select(where(is.numeric))
