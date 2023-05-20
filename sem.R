@@ -39,12 +39,12 @@ if (!dir.exists("output")) {
   dir.create("output")
 }
 
-compute_model <- function(model) {
+compute_model <- function(model, nboot = 2000) {
   if (!dir.exists(paste("output", model, sep = "/"))) {
     dir.create(paste("output", model, sep = "/"))
   }
 
-  pls <- calculate_pls(model, data, nboot = 250)
+  pls <- calculate_pls(model, data, nboot = nboot)
 
   x_summaries(model, pls)
   x_effects(model, pls)
@@ -53,9 +53,15 @@ compute_model <- function(model) {
 }
 
 # report participants data
+desc <- data %>% select(Age, Gender, Gender.other, Residence, Residence.other, Education, Education.other, Employment, Employment.other)
+desc <- desc %>% mutate(across(c(2:9), as.factor))
 sink(paste("output", "participants.txt", sep = "/"))
 print(report_participants(data, age = "Age", gender = "Gender",
   education = "Education", country = "Residence", digits = 3))
+cat("\n\n")
+print(summary(desc))
+cat("\n\n")
+print(psych::describe(desc %>% select(where(is.numeric))))
 sink()
 
 corr <- correlation(data) %>% dplyr::filter(p < 0.05)

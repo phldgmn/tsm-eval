@@ -1,1 +1,23 @@
-[1] "631 participants (Mean age = 31.633, SD = 11.075, range: [17, 67], 0.158% missing; Gender: 50.872% women, 48.336% men, 0.79% non-binary; Education: -oth-, 2.22%; EDU1, 1.43%; EDU2, 9.83%; EDU3, 13.31%; EDU4, 15.21%; EDU5, 11.25%; EDU6, 29.79%; EDU7, 13.79%; EDU8, 1.58%; missing, 1.58%; Country: 34.07% UK, 32.65% US, 31.22% DE, 2.06% other)"
+[1] "479 participants (Mean age = 32.197, SD = 11.594, range: [18, 67], 0.209% missing; Gender: 51.983% women, 47.599% men, 0.42% non-binary; Education: -oth-, 2.09%; EDU1, 1.25%; EDU2, 9.60%; EDU3, 14.20%; EDU4, 13.99%; EDU5, 11.90%; EDU6, 29.44%; EDU7, 14.61%; EDU8, 1.46%; missing, 1.46%; Country: 36.33% UK, 32.36% US, 29.65% DE, 1.67% other)"
+
+
+      Age       Gender  Gender.other Residence   Residence.other   Education                                                         Education.other Employment 
+ Min.   :18.0   D:  2   NA's:479     -oth-:  1   1   :  1        EDU6   :141   2 year college no degree                                      :  1    -oth-: 79  
+ 1st Qu.:21.0   F:249                DE   :142   NA's:478        EDU7   : 70   A/as levels                                                   :  1    EMP1 :145  
+ Median :30.0   M:228                EU   :  6                   EDU3   : 68   Associates Degree                                             :  1    EMP2 :112  
+ Mean   :32.2                        UK   :174                   EDU4   : 67   Associates degree and several more credits in unrelated fields:  1    EMP3 : 37  
+ 3rd Qu.:40.0                        US   :155                   EDU5   : 57   High school diploma                                           :  1    EMP4 : 83  
+ Max.   :67.0                        NA's :  1                   (Other): 69   (Other)                                                       :  3    EMP5 :  2  
+ NA's   :1                                                       NA's   :  7   NA's                                                          :471    NA's : 21  
+       Employment.other
+ IT            :  6    
+ Construction  :  3    
+ Education     :  3    
+ Food/beverage :  2    
+ Retail        :  2    
+ (Other)       : 51    
+ NA's          :412    
+
+
+    vars   n mean   sd median trimmed  mad min max range skew kurtosis   se
+Age    1 478 32.2 11.6     30    30.8 13.3  18  67    49 0.97     0.49 0.53

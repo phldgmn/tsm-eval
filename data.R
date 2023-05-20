@@ -10,7 +10,7 @@ prepare_data <- function(
   needs_cleaning = FALSE,
   use_complex_import = FALSE,
   acceptable_lastpage = 36,
-  na_limit = 0.1) {
+  na_limit = 0.01) {
   # read column-prefixes of relevant items
   items <- readRDS("data/item_prefixes.RData") # nolint: object_name_linter.
 

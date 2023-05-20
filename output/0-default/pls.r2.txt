@@ -2,5 +2,5 @@
    "moderate" "substantial" 
 (Rules: hair2011)
          EoA   EoI
-Rsq    0.591 0.774
-AdjRsq 0.590 0.773
+Rsq    0.582 0.785
+AdjRsq 0.581 0.784
