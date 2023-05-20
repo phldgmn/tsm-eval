@@ -44,7 +44,7 @@ compute_model <- function(model) {
     dir.create(paste("output", model, sep = "/"))
   }
 
-  pls <- calculate_pls(model, data, nboot = 5000)
+  pls <- calculate_pls(model, data, nboot = 250)
 
   x_summaries(model, pls)
   x_effects(model, pls)
@@ -76,3 +76,5 @@ compute_model("0-default")
 compute_model("1-indicators")
 compute_model("2-RES")
 compute_model("3-RES-PU")
+compute_model("4-RES-PU-VOI")
+compute_model("5-RES-PU-VOI-TKR")

@@ -1,0 +1,4 @@
+               paths tvalues pvalues
+IoIT  ->  EoA 0.4773   13.98   0.000
+IoIT  ->  EoI 0.7143   25.26   0.000
+EoA  ->  EoI  0.0888    2.67   0.004
