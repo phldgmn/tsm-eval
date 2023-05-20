@@ -44,7 +44,7 @@ compute_model <- function(model) {
     dir.create(paste("output", model, sep = "/"))
   }
 
-  pls <- calculate_pls(model, data, nboot = 1000)
+  pls <- calculate_pls(model, data, nboot = 5000)
 
   x_summaries(model, pls)
   x_effects(model, pls)

@@ -11,9 +11,9 @@ AIC -232.261 -513.600
 BIC -223.367 -500.258
 d    |       95% CI | Interpretation
 ------------------------------------
-1.37 | [1.20, 1.54] |          large
+1.37 | [1.19, 1.54] |          large
 1.75 | [1.57, 1.93] |          large
-0.18 | [0.02, 0.34] |     very small
+0.17 | [0.02, 0.33] |     very small
 
 - Interpretation rule: cohen1988
 
